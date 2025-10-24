@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- FAVICON - SOLUCIÓN ERROR 404 -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+    
     <meta name="description" content="Centro Psicológico de Especialidades - Expertos en salud mental">
     <meta name="theme-color" content="#b84a39">
 
@@ -311,8 +314,17 @@
     <!-- EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
-    <!-- Script principal CON TUS DATOS REALES -->
+    <!-- Script principal CON MANEJO DE ERRORES -->
     <script>
+        // MANEJADOR DE ERRORES DE EXTENSIONES
+        window.addEventListener('error', function(e) {
+            if (e.filename && e.filename.includes('content-all.js')) {
+                e.preventDefault();
+                console.log('⚠️ Error de extensión ignorado - No afecta tu sitio');
+                return true;
+            }
+        });
+
         // CONFIGURACIÓN EMAILJS CON TUS DATOS REALES
         const currentConfig = {
             PUBLIC_KEY: "svoVJvVfVFs5kcSDl",
@@ -631,7 +643,7 @@ Si el formulario no funciona:
 
         // Mensaje de bienvenida en consola
         console.log('%c¡Centro Psicológico de Especialidades!', 'color: #b84a39; font-size: 16px; font-weight: bold;');
-        console.log('%cSistema de citas activo ✅', 'color: #25D366; font-weight: bold;');
+        console.log('%c✅ Errores solucionados - Sitio listo para producción', 'color: #25D366; font-weight: bold;');
         console.log('Usa checkEmailStatus() para ver el estado de EmailJS');
     </script>
 </body>
